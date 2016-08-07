@@ -1,10 +1,5 @@
 var _getIterator = require('babel-runtime/core-js/get-iterator')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-exports.printString = printString;
-
 var _z80 = require('./z80');
 
 var _zxspectrum = require('./zxspectrum');
