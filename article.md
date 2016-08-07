@@ -1,6 +1,6 @@
 # Generating machine code for ZX Spectrum with JavaScript
 
-[[zxspectrum.jpg]]
+![ZX Spectrum](zxspectrum.jpg)
 
 ## Background
 
