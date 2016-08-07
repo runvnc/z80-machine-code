@@ -71,7 +71,7 @@ So, for example, take a look at line 14 in the main program file, which is [`src
 loadByteIntoRegister({data: blueBorder, register: accumulator});
 ```
 
-That is my version of `LD a, 1` (blueBorder is defined as a const number 1 in `src/zxspectrum.js`).  What this means is to put the value 1 into the A (accumlator) register.  A register, by the way, is basically a memory position or variable that the CPU can access very quickly, and registers like the accumulator are very commonly used as parameters for built-in (ROM) routines (function calls).
+That is my version of `LD a, 1` (blueBorder is defined as a const number 1 in `src/zxspectrum.js`).  What this means is to put the value 1 into the A (accumulator) register.  A register, by the way, is basically a memory position or variable that the CPU can access very quickly, and registers like the accumulator are very commonly used as parameters for built-in (ROM) routines (function calls).
 
 In this case, there is a function call that allows you to easily change the border color of the screen on the Spectrum.  All you have to do is put a number representing the color in the A register and then CALL this built-in routine.
 
