@@ -75,6 +75,8 @@ That is my version of `LD a, 1` (blueBorder is defined as a const number 1 in `s
 
 In this case, there is a function call that allows you to easily change the border color of the screen on the Spectrum.  All you have to do is put a number representing the color in the A register and then CALL this built-in routine.
 
+## Actually generating the machine code bytes
+
 Back to the Load instruction.  There are quite a few variations of load (LD), which is used to move data between registers and memory.  The one that I implemented, `LD r, n` is on page 69 of the Z80 manual.  This is the version that loads a byte into a register, so I called it `loadByteIntoRegister`.
 
 The core information on that page is this little diagram:
