@@ -1,4 +1,4 @@
-# Generating machine code for ZX Spectrum with JavaScript
+# Generating (Z80) machine code for ZX Spectrum with JavaScript
 
 ![ZX Spectrum](zxspectrum.jpg)
 
