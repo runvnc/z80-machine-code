@@ -114,7 +114,7 @@ binOut((address & 0xFF00) >> 8);
 
 And here is the description from the manual:
 
-
+![CALL nn](callnn.png)
 
 ## Testing the program on the Speccy
 
