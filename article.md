@@ -120,11 +120,13 @@ First to indicate CALL it just appends a byte with the same bits from the diagra
 
 To get the `0x9b`, we can just take `0x229b` and mask out the first byte by using the AND bitwise operator, which in JavaScript is the ampersand (`&`) symbol.  On the off-chance you're not familiar with bitwise operations, the [Wikipedia](https://en.wikipedia.org/wiki/Bitwise_operation) page is a decent explanation.  Once we have that, `binOut` appends it to the output array.
 
-For the second byte, we filter out the second byte, keep the first, and then shift the whole thing to the right, so the number basically becomes smaller and fits in one byte.  Then just output that one, and the CALL code has been generated.
+For the second byte, we filter out the second byte, keep the first, and then shift the whole thing to the right, so the number shifts from `0x2200` to `0x22` and fits in one byte.  Then just output that to the end of the array, and the CALL code has been generated.
 
 ## 'Assembly macros' with JavaScript
 
+The `printString` function from `src/testzx.js` is an example of using JavaScript to generate a series of machine code calls, somewhat similar to macros in assembly language programs.  I could have printed a string in other ways, but this is a simple way to illustrate that using the existing instructions defined.  `printString` just calls `loadByteIntoRegister` and `callSystem` in a loop.  `callSystem` works just like `callRoutine` but uses a special `RST` Z80 instruction.
 
+There is some code I have not explained in detail, but hopefully it is straightforward if you can also refer to the Z80 manual.
 
 ## Testing the program on the Speccy
 
