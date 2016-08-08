@@ -85,14 +85,20 @@ The core information on that page is this little diagram (sorry there is a curso
 
 ![LD r,n](ldrn.png)
 
-That means in order to indicate this instruction we need to output two bytes: the first has certain bits always on or off, and the second one is the data to store in the register.
+That means in order to indicate this instruction, we need to output two bytes: the first has certain bits always on or off, with the register indicated by a pattern of bits in the middle, and the secondbyte is the data to store in the register.
 
-My solution for finally outputting the machine code is to have a function that appends a byte to an output array, call that repeatedly working out each byte one at a time, and then at then end just convert the array to a Buffer and write it to a file.  So in the following code for loadByteIntoRegister, from `src/z80.js`, `binOut` is the function that pushes bytes to the end of the output array:
+My solution for outputting the machine code is to have a function that appends a byte to an output array, call that repeatedly, working out each byte one at a time, and then at then end just create a Buffer from the array and write it to a file.  So in the following code for loadByteIntoRegister, from `src/z80.js`, `binOut` is the function that pushes bytes to the end of the output array:
 
 ```javascript
-
-
+binOut(bits(`00${register}110`));
+binOut(data);
 ```
+
+On the off chance you aren't familiar, the backticks contain a template string, so it will insert the value of `register` in the middle of the string.  The value of `register` passed in this case is 'accumulator' which is a constant defined in `z80.js` as '111'.  That corresponds to the first row of the table from the Z80 manual page above, register A (also known as the accumulator).  So that is `bits('00111110')`'  The `bits` function is very simple, it just converts from this string representation of the bits in the number to a normal JavaScript number.  That is actually built in to JavaScript: its just `parseInt(num, 2)` which means parse an integer as a radix 2 (binary) number.  JavaScript makes things quite convenient.  Append the data to the output array and that instruction is done being 'assembled'.
+
+## CALLing routines
+
+
 
 ## Testing the program on the Speccy
 
