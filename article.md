@@ -83,6 +83,7 @@ Back to the Load instruction.  There are quite a few variations of load (LD), wh
 
 The core information on that page is this little diagram:
 
+![LD r,n](ldrn.png)
 
 ## Testing the program on the Speccy
 
