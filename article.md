@@ -49,6 +49,8 @@ in fact, very complicated.  Its just a few bits in a specific place and one or t
 
 So I wanted to try generating my own simple machine code binary files, and thought I could also take advantage of JavaScript as a type of macro language to generate instructions.  I briefly considered creating a 'real' assembler -- but that would require writing a parser and then writing the code in another language, and I like JavaScript.
 
+One (possible) advantage of doing it this way is that there is the option of distributing Z80/ZX routines as JavaScript modules via npm and so gaining the capabilities of that package system.
+
 ## Assembly language and machine code
 
 I'm not going to give a really detailed explanation because there are already a million
