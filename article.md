@@ -104,7 +104,7 @@ The next line makes a function call to the built-in ROM routine that sets the bo
 callRoutine({ address: setBorderColor });
 ```
 
-`setBorderColor` is definied in `src/zxspectrum.js` as 8859.  That is the location of the ROM assembly routine that sets the border color.  `callRoutine` outputs the machine code for the `CALL nn` instruction, described on page 279 of the Z80 manual.  Here is the JavaScript code:
+`setBorderColor` is defined in `src/zxspectrum.js` as 8859.  That is the location of the ROM assembly routine that sets the border color.  `callRoutine` outputs the machine code for the `CALL nn` instruction, described on page 279 of the Z80 manual.  Here is the JavaScript code:
 
 ```javascript
 binOut(bits('11001101'));
