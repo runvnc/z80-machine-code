@@ -81,9 +81,18 @@ In this case, there is a function call that allows you to easily change the bord
 
 Back to the Load instruction.  There are quite a few variations of load (LD), which is used to move data between registers and memory.  The one that I implemented, `LD r, n` is on page 69 of the Z80 manual.  This is the version that loads a byte into a register, so I called it `loadByteIntoRegister`.
 
-The core information on that page is this little diagram:
+The core information on that page is this little diagram (sorry there is a cursor [hand] left in the screenshot):
 
 ![LD r,n](ldrn.png)
+
+That means in order to indicate this instruction we need to output two bytes: the first has certain bits always on or off, and the second one is the data to store in the register.
+
+My solution for finally outputting the machine code is to have a function that appends a byte to an output array, call that repeatedly working out each byte one at a time, and then at then end just convert the array to a Buffer and write it to a file.  So in the following code for loadByteIntoRegister, from `src/z80.js`, `binOut` is the function that pushes bytes to the end of the output array:
+
+```javascript
+
+
+```
 
 ## Testing the program on the Speccy
 
