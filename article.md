@@ -94,7 +94,7 @@ binOut(bits(`00${register}110`));
 binOut(data);
 ```
 
-On the off chance you aren't familiar, the backticks contain a template string, so it will insert the value of `register` in the middle of the string.  The value of `register` passed in this case is 'accumulator' which is a constant defined in `z80.js` as '111'.  That corresponds to the first row of the table from the Z80 manual page above, register A (also known as the accumulator).  So that is `bits('00111110')`.  The `bits` function is very simple, it just converts from this string representation of the bits in the number to a normal JavaScript number.  That is actually built in to JavaScript: its just `parseInt(num, 2)` which means parse an integer as a radix 2 (binary) number.  JavaScript makes things quite convenient.  The next line appends the 'data' byte (n) to the output array and that instruction is done being 'assembled'.
+On the off chance you aren't familiar, the backticks contain a template string, so it will insert the value of `register` in the middle of the string.  The value of `register` passed in this case is 'accumulator' which is a constant defined in `z80.js` as '111'.  That corresponds to the first row of the table from the Z80 manual page above, register A (also known as the accumulator).  So that is `bits('00111110')`.  The `bits` function is very simple, it just converts from this string representation of the bits in the number to a normal JavaScript number.  That is actually built in to JavaScript: its just `parseInt(num, 2)` which means parse the string as a radix 2 (binary) number.  JavaScript makes things quite convenient.  The next line appends the 'data' byte (n) to the output array and that instruction is done being 'assembled'.
 
 ## CALLing routines
 
