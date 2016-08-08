@@ -142,7 +142,7 @@ A screen just like this should show up:
 
 ![hello](hello.gif)
 
-## Z80/ZX libraries
+## Z80/ZX libraries/tools
 
 If you are interested in getting into Z80 assembly programming, you may want to implement a few more instructions.  Pull requests are welcome.  Or, you could always use a real assembler.  ZX Spin's built in assembler works great, although I couldn't get it to actually execute any macros.  The HiSOFT DevPac is a good one if you want the authentic experience.  Another one that looks good, although I haven't tested much, is [sjasmplus](https://sourceforge.net/projects/sjasmplus/) (I believe it support Lua scripting).
 
