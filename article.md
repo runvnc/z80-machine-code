@@ -1,4 +1,4 @@
-# Generating machine code for ZX Spectrum with JavaScript
+# Generating (Z80) machine code for ZX Spectrum with JavaScript
 
 ![ZX Spectrum](zxspectrum.jpg)
 
@@ -49,6 +49,8 @@ in fact, very complicated.  Its just a few bits in a specific place and one or t
 
 So I wanted to try generating my own simple machine code binary files, and thought I could also take advantage of JavaScript as a type of macro language to generate instructions.  I briefly considered creating a 'real' assembler -- but that would require writing a parser and then writing the code in another language, and I like JavaScript.
 
+One (possible) advantage of doing it this way is that there is the option of distributing Z80/ZX routines as JavaScript modules via npm and so gaining the capabilities of that package system.
+
 ## Assembly language and machine code
 
 I'm not going to give a really detailed explanation because there are already a million
@@ -63,11 +65,19 @@ The ZX Spectrum comes with some built-in ROM routines that make it possible
 to do some somewhat interesting things with just a few function calls.
 Which is not actually hard to do, even in machine code.
 
-Unfortunately, I was not able to find a reference for the addresses and features of these ROM routines.  Rather I had to rely on scattered [blog posts]{https://chuntey.wordpress.com/2012/12/18/how-to-write-zx-spectrum-games-chapter-1).
+Unfortunately, I was not able to find a reference for the addresses and features of these ROM routines.  Rather I had to rely on scattered [blog posts](https://chuntey.wordpress.com/2012/12/18/how-to-write-zx-spectrum-games-chapter-1).
 
-So, for example, take a look at line 14 in the main program file, which is [`src/testzx.js`](https://github.com/runvnc/z80-machine-code/blob/2132bb30a1fc9562d1cf37d88b348e67ea9b9d22/src/testzx.js#L14).  That is my version of `LD a, 1`.  What this means is to put the value 1 into the A (accumlator) register.  A register, btw, is basically a memory position or variable that the CPU can access very quickly, and registers like the accumulator are very commonly used as parameters for built-in (ROM) function calls.
+So, for example, take a look at line 14 in the main program file, which is [`src/testzx.js`](https://github.com/runvnc/z80-machine-code/blob/2132bb30a1fc9562d1cf37d88b348e67ea9b9d22/src/testzx.js#L14):
+
+```javascript
+loadByteIntoRegister({data: blueBorder, register: accumulator});
+```
+
+That is my version of `LD a, 1` (blueBorder is defined as a const number 1 in `src/zxspectrum.js`).  What this means is to put the value 1 into the A (accumulator) register.  A register, by the way, is basically a memory position or variable that the CPU can access very quickly, and registers like the accumulator are very commonly used as parameters for built-in (ROM) routines (function calls).
 
 In this case, there is a function call that allows you to easily change the border color of the screen on the Spectrum.  All you have to do is put a number representing the color in the A register and then CALL this built-in routine.
+
+## Actually generating the machine code bytes
 
 Back to the Load instruction.  There are quite a few variations of load (LD), which is used to move data between registers and memory.  The one that I implemented, `LD r, n` is on page 69 of the Z80 manual.  This is the version that loads a byte into a register, so I called it `loadByteIntoRegister`.
 
@@ -76,5 +86,5 @@ The core information on that page is this little diagram:
 
 ## Testing the program on the Speccy
 
-[hello](hello.gif)
+![hello](hello.gif)
 
