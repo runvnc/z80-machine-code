@@ -128,7 +128,23 @@ The `printString` function from `src/testzx.js` is an example of using JavaScrip
 
 There is some code I have not explained in detail, but hopefully it is straightforward if you can also refer to the Z80 manual.
 
+## Running the Node.js program
+
+To run the program, set it up first with `npm i`, then run `npm run build`.  I tried on two Ubuntu VMs, can't be sure it will work on other people's computers.  Then `node testzx.js` should write the file `tst.bin`.  You will need to transfer this file to your Windows disk if you are using ZX Spin like I am.
+
 ## Testing the program on the Speccy
 
+Once you have your output binary `tst.bin` loaded on your Windows drive, open up ZX Spin.  Go to File | Load Binary File.., select `tst.bin`, and type `24576` for the start address.  Then hit the Load button.  Now, the program should be in memory, but it won't actually run it until we tell BASIC that's what we want to do.
+
+You will need to enter the command `RANDOMIZE USR 24576`, HOWEVER, you CANNOT simply type that in.  The Spectrum has a funny way of keying in BASIC commands.  With the ZX Spin emulator, you need to press `SHIFT-T` to enter `RANDOMIZE`, then hit `CONTROL-SHIFT-L`, then release the keys, then hit the `L` key, `USR` should appear, then type `24576[ENTER]`.  (If you look at the ZX Spectrum photo at the top of this article you can see the RND and USR keywords above the T and L keys.)
+
+A screen just like this should show up:
+
 ![hello](hello.gif)
+
+## Z80/ZX libraries
+
+If you are interested in getting into Z80 assembly programming, you may want to implement a few more instructions.  Pull requests are welcome.  Or, you could always use a real assembler.  ZX Spin's built in assembler works great, although I couldn't get it to actually execute any macros.  The HiSOFT DevPac is a good one if you want the authentic experience.  Another one that looks good, although I haven't tested much, is [sjasmplus](https://sourceforge.net/projects/sjasmplus/) (I believe it support Lua scripting).
+
+Dean Belfield has provided some ZX Spectrum libraries on his website [here](http://www.animatez.co.uk/programming/assembly-language/z80/z80-library-routines/).
 
