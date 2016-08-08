@@ -116,6 +116,16 @@ And here is the description from the manual:
 
 ![CALL nn](callnn.png)
 
+First to indicate CALL it just appends a byte with the same bits from the diagram in the manual '11001101'.  The memory address of the routine to run, which is indicated by the 2nd and 3rd bytes of the instruction, is a little more tricky.  The Z80 wants it in reverse order from the way it is stored in JavaScript.  The address passed in for the setBorderColor routine uses two bytes (aka a word), 8859 in decimal, or 0x229b in hexadecimal.  We need to output the `0x9b` byte first, then the `0x22` byte.  
+
+To get the `0x9b`, we can just take `0x229b` and mask out the first byte by using the AND bitwise operator, which in JavaScript is the ampersand (`&`) symbol.  On the off-chance you're not familiar with bitwise operations, the [Wikipedia](https://en.wikipedia.org/wiki/Bitwise_operation) page is a decent explanation.  Once we have that, `binOut` appends it to the output array.
+
+For the second byte, we filter out the second byte, keep the first, and then shift the whole thing to the right, so the number basically becomes smaller and fits in one byte.  Then just output that one, and the CALL code has been generated.
+
+## 'Assembly macros' with JavaScript
+
+
+
 ## Testing the program on the Speccy
 
 ![hello](hello.gif)
