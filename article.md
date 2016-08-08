@@ -67,7 +67,7 @@ Which is not actually hard to do, even in machine code.
 
 Unfortunately, I was not able to find a reference for the addresses and features of these ROM routines.  Rather I had to rely on scattered [blog posts](https://chuntey.wordpress.com/2012/12/18/how-to-write-zx-spectrum-games-chapter-1).
 
-So, for example, take a look at line 14 in the main program file, which is [`src/testzx.js`](https://github.com/runvnc/z80-machine-code/blob/2132bb30a1fc9562d1cf37d88b348e67ea9b9d22/src/testzx.js#L14):
+So, for example, take a look at line 14 in the main program file, which is `src/testzx.js`:
 
 ```javascript
 loadByteIntoRegister({data: blueBorder, register: accumulator});
